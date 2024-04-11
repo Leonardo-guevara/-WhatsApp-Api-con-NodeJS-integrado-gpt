@@ -4,6 +4,7 @@
   "description": "whatsapp gpt api",
   "main": "index.js",
   "scripts": {
+    "start": "node ./src/index.js",
     "test": "api whatswaapp nodejs gpt"
   },
   "repository": {
