@@ -3,17 +3,18 @@
 const verificar = (req, res) => {
     try{
         var VERIFY_TOKEN  = "FIBONODEJSAPIMETA";
+
         var token = req.query["hub.verify_token"];
         var challenge = req.query["hub.challenge"];
 
         if (challenge != null && token != null && token == VERIFY_TOKEN ){
             res.send(challenge);
         }else{
-            res.status(400).send();
+            res.status(403).send();
         }
 
     }catch(e){
-        res.status(404).send();
+        res.status(400).send();
     }
 }
 
