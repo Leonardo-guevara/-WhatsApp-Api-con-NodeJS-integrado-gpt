@@ -2,18 +2,25 @@
 
 const verificar = (req, res) => {
   try {
-    var VERIFY_TOKEN = "FIBONODEJSAPIMETA";
-    var token = req.query["hub.verify_token"];
-    var challenge = req.query["hub.challenge"];
+    const VERIFY_TOKEN = "FIBONODEJSAPIMETA";
 
-    // if (challenge != null && token != null && token == VERIFY_TOKEN ){
-    //     res.send(challenge);
-    // }else{
-    //     res.status(403).send();
-    // }
-    res.send(challenge);
-    console.log(req);
+    let mode = req.query["hub.mode"];
+    let token = req.query["hub.verify_token"];
+    let challenge = req.query["hub.challenge"];
+  
+
+    if (challenge != null && token != null && token == VERIFY_TOKEN ){
+        console.log('Se ha envido');
+        res.status(200).send(challenge);
+
+    }else{
+        console.log(req);
+        console.log('error de validacion');
+        res.status(403);
+    }
+
   } catch (e) {
+    console.log('No existe ')
     res.status(400).send();
   }
 };
