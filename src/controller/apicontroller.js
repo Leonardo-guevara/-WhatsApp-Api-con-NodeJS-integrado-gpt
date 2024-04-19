@@ -2,18 +2,20 @@ const enviarmensaje = require("../service/apiservice");
 
 const verificar = (req, res) => {
     try{
-        var tokenfibocode = "FIBONODEJSAPIMETA";
+        const VERIFY_TOKEN = "facebook"
 
-        var token = req.query["hub.verify_token"];
-        var challenge = req.query["hub.challenge"];
-        res.send(req);
-        // if (challenge != null && token != null && token == tokenfibocode){
-        //     res.send(challenge);
-        // }else{
-        //     res.send('challenge');
-        //     res.status(400).send();
-        // }
-
+        const mode      = request.query['hub.mode']
+        const token     = request.query['hub.verify_token']
+        const challenge = request.query['hub.challenge']
+      
+        if(mode && token) {
+          if(mode === 'subscribe' && token === VERIFY_TOKEN) {
+            console.log('WEBHOOK_VERIFIED')
+            response.status(200).send(challenge)
+          } else {
+            response.sendStatus(403)
+          }
+        }
     }catch(e){
         res.status(400).send();x``
     }
