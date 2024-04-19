@@ -7,12 +7,12 @@ const verificar = (req, res) => {
         var token = req.query["hub.verify_token"];
         var challenge = req.query["hub.challenge"];
         res.send(req);
-        if (challenge != null && token != null && token == tokenfibocode){
-            res.send(challenge);
-        }else{
-            res.send('challenge');
-            res.status(400).send();
-        }
+        // if (challenge != null && token != null && token == tokenfibocode){
+        //     res.send(challenge);
+        // }else{
+        //     res.send('challenge');
+        //     res.status(400).send();
+        // }
 
     }catch(e){
         res.status(400).send();x``
