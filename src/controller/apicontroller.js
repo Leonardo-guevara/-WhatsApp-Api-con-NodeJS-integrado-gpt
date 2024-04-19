@@ -8,9 +8,9 @@ const verificar = (req, res) => {
     let token = req.query["hub.verify_token"];
     let challenge = req.query["hub.challenge"];
 
-    console.log('VERIFY_TOKEN'.VERIFY_TOKEN);
-    console.log('token'.token);
-    console.log('challenge'.challenge);
+    console.log(VERIFY_TOKEN);
+    console.log(token);
+    console.log(challenge);
 
     if (challenge != null && token != null && token == VERIFY_TOKEN ){
         console.log('Se ha envido');
