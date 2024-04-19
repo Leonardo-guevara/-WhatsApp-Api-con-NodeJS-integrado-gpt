@@ -7,14 +7,16 @@ const verificar = (req, res) => {
     let mode = req.query["hub.mode"];
     let token = req.query["hub.verify_token"];
     let challenge = req.query["hub.challenge"];
-  
+
+    console.log('VERIFY_TOKEN'.VERIFY_TOKEN);
+    console.log('token'.token);
+    console.log('challenge'.challenge);
 
     if (challenge != null && token != null && token == VERIFY_TOKEN ){
         console.log('Se ha envido');
         res.status(200).send(challenge);
 
     }else{
-        console.log(req);
         console.log('error de validacion');
         res.status(403);
     }
