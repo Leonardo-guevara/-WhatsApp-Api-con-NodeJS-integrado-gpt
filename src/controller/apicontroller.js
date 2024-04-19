@@ -4,20 +4,20 @@ const verificar = (req, res) => {
     try{
         const VERIFY_TOKEN = "facebook"
 
-        const mode      = request.query['hub.mode']
-        const token     = request.query['hub.verify_token']
-        const challenge = request.query['hub.challenge']
+        const mode      = request.query['hub.mode'];
+        const token     = request.query['hub.verify_token'];
+        const challenge = request.query['hub.challenge'];
       
         if(mode && token) {
           if(mode === 'subscribe' && token === VERIFY_TOKEN) {
-            console.log('WEBHOOK_VERIFIED')
-            response.status(200).send(challenge)
+            console.log('WEBHOOK_VERIFIED');
+            response.status(200).send(challenge);
           } else {
-            response.sendStatus(403)
+            response.sendStatus(403);
           }
         }
     }catch(e){
-        res.status(400).send();x``
+        res.status(400).send();
     }
 
 }
