@@ -7,12 +7,13 @@ const verificar = (req, res) => {
         var tokenfibocode = "FIBONODEJSAPIMETA";
         var token = req.query["hub.verify_token"];
         var challenge = req.query["hub.challenge"];
+
         if (challenge != null && token != null && token == tokenfibocode){
             res.send(challenge);
         }else{
             res.status(400).send();
         }
-        console.log(req);
+
     }catch(e){
         res.status(400).send();
     }
