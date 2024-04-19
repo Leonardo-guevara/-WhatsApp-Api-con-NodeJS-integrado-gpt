@@ -1,46 +1,41 @@
-const enviarmensaje = require("../service/apiservice");
+// const enviarmensaje = require("../service/apiservice");
 
 const verificar = (req, res) => {
     try{
-        const VERIFY_TOKEN = "facebook"
+        var VERIFY_TOKEN  = "FIBONODEJSAPIMETA";
+        var token = req.query["hub.verify_token"];
+        var challenge = req.query["hub.challenge"];
 
-        const mode      = request.query['hub.mode'];
-        const token     = request.query['hub.verify_token'];
-        const challenge = request.query['hub.challenge'];
-      
-        if(mode && token) {
-          if(mode === 'subscribe' && token === VERIFY_TOKEN) {
-            console.log('WEBHOOK_VERIFIED');
-            response.status(200).send(challenge);
-          } else {
-            response.sendStatus(403);
-          }
+        if (challenge != null && token != null && token == VERIFY_TOKEN ){
+            res.send(challenge);
+        }else{
+            res.status(400).send();
         }
-    }catch(e){
-        res.status(400).send();
-    }
 
+    }catch(e){
+        res.status(404).send();
+    }
 }
 
 const recibir = (req, res) => {
-    // res.send('recibir');
-    try{
-        var entry = (req.body["entry"])[0];
-        var changes = (entry["changes"])[0];
-        var value = changes["value"];
-        var objetoMensaje = value["messages"];
+    res.send('recibir');
+    // try{
+    //     var entry = (req.body["entry"])[0];
+    //     var changes = (entry["changes"])[0];
+    //     var value = changes["value"];
+    //     var objetoMensaje = value["messages"];
 
-        if (typeof objetoMensaje != "undefined"){
-            var messages = objetoMensaje[0];
-            var texto = messages["text"]["body"];
-            var numero = messages["from"];
-            enviarmensaje.EnviarMensajeWhastpapp(texto,numero);
-        }
-        res.send("EVENT_RECEIVED");
-    }catch(e){
-        console.log(e);
-        res.send("EVENT_RECEIVED");
-    }
+    //     if (typeof objetoMensaje != "undefined"){
+    //         var messages = objetoMensaje[0];
+    //         var texto = messages["text"]["body"];
+    //         var numero = messages["from"];
+    //         enviarmensaje.EnviarMensajeWhastpapp(texto,numero);
+    //     }
+    //     res.send("EVENT_RECEIVED");
+    // }catch(e){
+    //     console.log(e);
+    //     res.status(400).send();
+    // }
 }
 
 module.exports = {
