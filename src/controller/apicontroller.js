@@ -18,7 +18,7 @@ const verificar = (req, res) => {
 
     }else{
         console.log('error de validacion');
-        res.status(403);
+        res.status(403).send();
     }
 
   } catch (e) {
