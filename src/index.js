@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.use("/api",apiruta);
+app.use("/",apiruta);
 
 app.listen(PORT,() => {
     console.log("El puerto es : https://jellyfish-app-knjdc.ondigitalocean.app/api");
