@@ -1,8 +1,6 @@
 const enviarmensaje = require("../service/apiservice");
 
 const verificar = (req, res) => {
-
-    res.send('verficar');
     try{
         var tokenfibocode = "FIBONODEJSAPIMETA";
         var token = req.query["hub.verify_token"];

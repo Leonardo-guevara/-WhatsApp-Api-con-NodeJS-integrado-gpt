@@ -13,6 +13,6 @@ app.use("/api",apiruta);
 
 
 app.listen(PORT,() => {
-    console.log("El puerto es : https://jellyfish-app-knjdc.ondigitalocean.app:" + PORT+'/api');
+    console.log("El puerto es : https://jellyfish-app-knjdc.ondigitalocean.app/api");
 })
 
